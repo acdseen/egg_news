@@ -11,7 +11,7 @@ module.exports = appInfo => {
 
   config.mongoose={
     client:{
-      url:'mongodb://127.0.0.1/hczsnews'
+      url:'mongodb://127.0.0.1/201812blog'
     }
   }
   config.security={

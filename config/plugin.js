@@ -10,3 +10,7 @@ exports.cors={
     enabled:true,
     package:'egg-cors'
 }
+exports.validate={
+    enabled:true,
+    package:'egg-validate'
+}

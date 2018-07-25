@@ -11,4 +11,6 @@ module.exports = app => {
   router.get('/api/user/signout',controller.user.signout);
   // 图片上传
   router.post('/api/uploadimg',controller.upload.uploadimg);
+  // 新闻增删改查
+  router.resources('news', '/api/news', controller.news);
 };
