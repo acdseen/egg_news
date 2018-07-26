@@ -6,13 +6,12 @@ module.exports=class BaseController extends Controller{
         pageNum = isNaN(pageNum) ? 1 : parseInt(pageNum);
         pageSize = isNaN(pageSize) ? 5 : parseInt(pageSize);
         let query = {};
-        console.log(keyword);
         if (keyword && fields.length > 0) {
             query['$or'] = fields.map(field => ({ [field]: new RegExp(keyword) }));
         }
         let total = await ctx.model[modName].count(query);
-        console.log(query);
         let cursor = ctx.model[modName].find(query).sort({ _id: -1 }).skip((pageNum - 1) * pageSize).limit(pageSize);
+        // 通过外键与另一张表建立关联
         populateFields.forEach(field => {
             cursor = cursor.populate(field);
         });
