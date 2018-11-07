@@ -46,7 +46,7 @@ class NewsController extends BaseController {
         ids.push(id);
         try {
             await ctx.model.News.remove({ _id: { $in: ids } });
-            this.success('删除文章成功');
+            this.success('删除成功');
         } catch (error) {
             this.error(error);
         }
