@@ -4,6 +4,7 @@ const pump = require('mz-modules/pump');
 const fs = require('fs');
 const path = require('path');
 
+// 图片文件上传接口
 class UploadController extends BaseController {
   async uploadimg() {
     const stream = await this.ctx.getFileStream();
