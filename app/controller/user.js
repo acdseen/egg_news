@@ -6,6 +6,10 @@ class UserController extends BaseController {
     let user = ctx.request.body;
     try {
       user = await ctx.model.User.create(user);
+      // 保存用户信息
+      await ctx.model.UserInfo.create({
+        staff: user._id,
+      });
       this.success({ user });
     } catch (error) {
       this.error(error);
@@ -38,10 +42,25 @@ class UserController extends BaseController {
       this.error(error);
     }
   }
-
-  async signout() {
+  async getUserInfo() {
     const { ctx } = this;
-    // ctx.session.user = null;
+    const authorization = ctx.request.headers.authorization;
+    try {
+      const decoded = this.app.jwt.decode(
+        authorization.split(' ')[1],
+        this.app.jwt.secret
+      );
+      const staff = decoded.user._id;
+      // 通过外键填充用户信息
+      const store = ctx.model.UserInfo.findOne({ staff }).populate('staff');
+      const item = await store;
+      this.success(item);
+    } catch (error) {
+      this.error(error);
+    }
+  }
+  signout() {
+    // jwt是无状态的，退出登录只需客户端删除token
     this.success('已退出！');
   }
 }
