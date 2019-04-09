@@ -16,12 +16,10 @@ module.exports = appInfo => {
   };
   config.security = {
     csrf: false,
-    domainWhiteList: [ 'http://localhost:8081' ],
+    domainWhiteList: [ 'http://localhost:8080' ],
   };
   config.jwt = {
-    secret: '123456',
+    secret: '123456', // jwt密钥
   };
-  // config.middleware = [ 'jwtware' ];
-
   return config;
 };
