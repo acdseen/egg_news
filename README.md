@@ -2,7 +2,7 @@
 
 ## About
 
-个人瞎搞的一个 egg 新闻后台项目
+个人瞎搞的一个 egg 新闻后台项目 前端项目在这https://github.com/acdseen/news_sys.git
 
 ### 项目运行
 
