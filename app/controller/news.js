@@ -12,7 +12,7 @@ class NewsController extends BaseController {
   // 查询新闻
   async index() {
     try {
-      await this.getPager({ modName: 'News', fields: [ 'newsLists' ] });
+      await this.getPager({ modName: 'News', fields: [ 'newsType' ] });
     } catch (error) {
       this.error(error);
     }

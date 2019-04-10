@@ -52,7 +52,10 @@ class UserController extends BaseController {
       );
       const staff = decoded.user._id;
       // 通过外键填充用户信息
-      const store = ctx.model.UserInfo.findOne({ staff }).populate('staff');
+      const store = ctx.model.UserInfo.findOne({ staff }, '-_id').populate(
+        'staff',
+        'username -_id'
+      );
       const item = await store;
       this.success(item);
     } catch (error) {
