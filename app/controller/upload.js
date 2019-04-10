@@ -19,8 +19,8 @@ class UploadController extends BaseController {
       );
       const writeStream = fs.createWriteStream(target);
       await pump(stream, writeStream);
-      // sthis.ctx.redirect('/public/' + filename);
-      this.success({ url: 'http://127.0.0.1:7001/public/image/' + filename });
+      // this.ctx.redirect('/public/' + filename);
+      this.success({ url: 'http://127.0.0.1:7001/image/' + filename });
     } catch (error) {
       this.error(error);
     }

@@ -18,8 +18,15 @@ module.exports = appInfo => {
     csrf: false,
     domainWhiteList: [ 'http://localhost:8080' ],
   };
+  config.cors = {
+    origin: '*',
+    allowMethods: 'OPTIONS,GET,HEAD,PUT,POST,DELETE,PATCH',
+  };
   config.jwt = {
     secret: '123456', // jwt密钥
+  };
+  config.static = {
+    prefix: '/',
   };
   return config;
 };
